@@ -2812,6 +2812,7 @@ public class Main extends javax.swing.JFrame {
             temp.add(camp);
         }
         return temp;
+        //LOLO
     }
     public void crearMilRegistros(String path) throws IOException{
         AccesoCampo cam = new AccesoCampo();
