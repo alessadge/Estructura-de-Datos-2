@@ -936,7 +936,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton24" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton23" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonProblem" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="270" max="32767" attributes="0"/>
               </Group>
@@ -948,7 +948,7 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton23" min="-2" pref="82" max="-2" attributes="0"/>
+                  <Component id="jButtonProblem" min="-2" pref="82" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jButton24" min="-2" pref="82" max="-2" attributes="0"/>
                   <EmptySpace pref="112" max="32767" attributes="0"/>
@@ -957,12 +957,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton23">
+        <Component class="javax.swing.JButton" name="jButtonProblem">
           <Properties>
             <Property name="text" type="java.lang.String" value="Exportar Archivo a Excel"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton23ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonProblemActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton24">

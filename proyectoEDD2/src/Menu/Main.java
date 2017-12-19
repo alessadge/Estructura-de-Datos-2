@@ -216,7 +216,7 @@ public class Main extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         jButton29 = new javax.swing.JButton();
         panel_estandarizacion = new javax.swing.JPanel();
-        jButton23 = new javax.swing.JButton();
+        jButtonProblem = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jd_campos = new javax.swing.JDialog();
@@ -897,10 +897,10 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton23.setText("Exportar Archivo a Excel");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProblem.setText("Exportar Archivo a Excel");
+        jButtonProblem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                jButtonProblemActionPerformed(evt);
             }
         });
 
@@ -922,7 +922,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(panel_estandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jButton23))
+                    .addComponent(jButtonProblem))
                 .addContainerGap(270, Short.MAX_VALUE))
         );
         panel_estandarizacionLayout.setVerticalGroup(
@@ -931,7 +931,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonProblem, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(112, Short.MAX_VALUE))
@@ -2066,7 +2066,7 @@ public class Main extends javax.swing.JFrame {
         tab_nuevo.add(p);
     }//GEN-LAST:event_jButton18ActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+    private void jButtonProblemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProblemActionPerformed
 
         if (campos.isEmpty() || registros.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Error al Exportar\n El Archivo puede estar vacio o no ha sido cargado");
@@ -2084,7 +2084,7 @@ public class Main extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_jButton23ActionPerformed
+    }//GEN-LAST:event_jButtonProblemActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         if (campos.isEmpty() || registros.isEmpty()) {
@@ -2753,7 +2753,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
@@ -2772,6 +2771,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonProblem;
     private javax.swing.JComboBox<Campo> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox21;
     private javax.swing.JLabel jLabel1;
