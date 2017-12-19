@@ -2159,24 +2159,28 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-
-        try {
-            String contenido = "";
-            String path1 = "";
-            JFileChooser jfc = new JFileChooser();
-            int seleccion = jfc.showOpenDialog(this);
-            if (seleccion == JFileChooser.APPROVE_OPTION) {
-                String ruta = jfc.getSelectedFile().getPath();
-                path1 = ruta;
+        if (indicesAux.isEmpty()) {
+            try {
+                String contenido = "";
+                String path1 = "";
+                JFileChooser jfc = new JFileChooser();
+                int seleccion = jfc.showOpenDialog(this);
+                if (seleccion == JFileChooser.APPROVE_OPTION) {
+                    String ruta = jfc.getSelectedFile().getPath();
+                    path1 = ruta;
+                }
+                contenido = leer(path1);
+                File file = new File(path1);
+                fileRegistro = file;
+                AccesoCampo cam = new AccesoCampo();
+                cam.crearFileCampo(file);
+                indicesAux = cam.cargarIndices();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
-            contenido = leer(path1);
-            File file = new File(path1);
-            fileRegistro = file;
-            AccesoCampo cam = new AccesoCampo();
-            cam.crearFileCampo(file);
-            indicesAux = cam.cargarIndices();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+
+        }else{
+            
         }
 
         int XM = Integer.parseInt(tf_indices.getText());
@@ -2245,15 +2249,13 @@ public class Main extends javax.swing.JFrame {
         /*for (int i = 0; i < registros.size(); i++) {
             indicesAux.add(i);
         }*/
-
         // TODO add your handling code here:
-        
         if (indicesAux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error al Mostrar el arbol, verifique si hay indices cargados");
         } else {
             crearArbol(indicesAux);
-
             System.out.println(arbol.llamarRecorrer());
+
         }
 
     }//GEN-LAST:event_jButton29ActionPerformed
@@ -2617,6 +2619,11 @@ public class Main extends javax.swing.JFrame {
         for (int i = 0; i < a.size(); i++) {
             arbol.insertar(i);
         }
+
+        for (int i = 0; i < indicesAux.size(); i++) {
+            System.out.println(indicesAux.get(i));
+        }
+
     }
 
     //arbol.inertar(int)

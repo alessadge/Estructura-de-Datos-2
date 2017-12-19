@@ -359,6 +359,7 @@ public class Raiz {
         String mostrar = recorrer(primerNodo);
         nivel = 1;
         imprimir = 1;
+        
         return arbol;
     }
 
