@@ -2437,8 +2437,8 @@ public class Main extends javax.swing.JFrame {
             File archive;
             try {
 
-                archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + "Cruzado.txt");
-                //archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Cruzada.txt");
+                //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + "Cruzado.txt");
+                archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Cruzada.txt");
 
                 for (int i = 0; i < registros3.size(); i++) {
                     System.out.println("Registro #" + i);
@@ -2447,8 +2447,8 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
 
-                archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + "Cruzada.txt");
-                //archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Cruzada.txt");
+                //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + "Cruzada.txt");
+                archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Cruzada.txt");
 
                 cam.crearFileCampo(archive);
                 cam.escribirMetadata(metadata);
@@ -2627,8 +2627,8 @@ public class Main extends javax.swing.JFrame {
         Campo aux = new Campo();
         Campo aux2 = new Campo();
 
-        aux.setNombre("Nombre");
-        aux2.setNombre("edad");
+        aux.setNombre("Sexo");
+        aux2.setNombre("No.Cuenta");
 
         campos10mil.add(aux);
         campos10mil.add(aux2);
@@ -2639,13 +2639,17 @@ public class Main extends javax.swing.JFrame {
             a.setCampos(newCampo(campos10mil));
             for (int j = 0; j < campos10mil.size(); j++) {
                 if (j == 0) {
-                    a.getCampos().get(j).setContenido("Jahaziel" + i);
+                    if(i%2==0){
+                        a.getCampos().get(j).setContenido("M");
+                    }else{
+                        a.getCampos().get(j).setContenido("F");
+                    }
+                    
                 } else {
-                    a.getCampos().get(j).setContenido("23" + i);
+                    a.getCampos().get(j).setContenido("2017" + i+"11");
                 }
             }
             registros10mil.add(a);
-
         }
 
         AccesoCampo cam = new AccesoCampo();
@@ -2653,7 +2657,7 @@ public class Main extends javax.swing.JFrame {
         try {
 
             //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
-            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + "mil" + ".txt");
+            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "mil.txt");
 
             /*for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #" + i);
@@ -2662,7 +2666,7 @@ public class Main extends javax.swing.JFrame {
                 }
             }*/
             //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
-            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + "mil" + ".txt");
+            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "mil.txt");
 
             cam.crearFileCampo(archive);
             cam.escribirMetadata(metadata);
