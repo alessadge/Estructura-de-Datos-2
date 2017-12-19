@@ -13,7 +13,7 @@ public class AccesoCampo {
     static int tamanoRegistro = 80;
     int tamCampo;
     int tamRegistro;
-    private static ArrayList<String> nombresCampos = new ArrayList();
+    ArrayList<String> nombresCampos = new ArrayList();
     
     public void crearFileCampo(File archivo) throws IOException {
         if (archivo.exists() && !archivo.isFile()) {
@@ -220,7 +220,7 @@ public class AccesoCampo {
         return temporal;
     }
    
-    public static Campo getCampo(int i) throws IOException {
+    public  Campo getCampo(int i) throws IOException {
         if (i >= 0 && i <= getNumeroRegistros()){
             flujo.seek(i * tamanoRegistro);
             return new Campo(flujo.readUTF(), null);
@@ -229,7 +229,7 @@ public class AccesoCampo {
             return null;
         }
     }
-    public static Campo getCampoReg(int i) throws IOException {
+    public  Campo getCampoReg(int i) throws IOException {
         if (i >= 0 && i <= getNumeroRegistros()){
             flujo.seek(i * tamanoRegistro);
             return new Campo(null, flujo.readUTF());
@@ -277,5 +277,32 @@ public class AccesoCampo {
             temp.add(j);
         }
         return temp;
+    }
+    
+    public void escribirMil(String path) throws IOException{
+        flujo.seek(0*tamanoRegistro);
+        flujo.writeUTF(path);
+        flujo.seek(1*tamanoRegistro);
+        flujo.writeUTF("10000");
+        flujo.seek(2*tamanoRegistro);
+        flujo.writeUTF("2");
+        flujo.seek(3*tamanoRegistro);
+        flujo.writeUTF("Nombre");
+        flujo.seek(4*tamanoRegistro);
+        flujo.writeUTF("Edad");
+        int acum=5;
+        for (int i = 5; i < 10000+5; i++) {
+            for (int j = 0; j < 2; j++) {
+                    if(j==0){
+                       flujo.seek(acum*tamanoRegistro);
+                       flujo.writeUTF("Registro #"+(i-5)+" Nombre");
+                       acum++; 
+                    }
+                    if(j==1){
+                        flujo.seek(acum*tamanoRegistro);
+                        flujo.writeUTF("Registro #"+(i-5)+" Edad");
+                    }  
+            } 
+        }
     }
 }

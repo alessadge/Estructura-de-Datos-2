@@ -205,10 +205,10 @@ public class Main extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         tf_registro = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton32 = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        jComboBox21 = new javax.swing.JComboBox<>();
         panel_indices = new javax.swing.JPanel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
@@ -612,7 +612,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -706,7 +706,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -734,6 +734,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButton33.setText("Modificar Registro");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("Ingrese contenido de llave maestra:");
 
@@ -742,42 +747,42 @@ public class Main extends javax.swing.JFrame {
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jButton32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton33)
-                .addGap(79, 79, 79))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tf_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(50, 50, 50))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tf_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jButton32)
+                                .addGap(26, 26, 26))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox21, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jButton33)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel15))
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_registro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(136, 136, 136))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton32)
-                            .addComponent(jButton33))
-                        .addGap(79, 79, 79))))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_registro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton33)
+                    .addComponent(jButton32))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
@@ -787,7 +792,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -803,7 +808,7 @@ public class Main extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addGap(0, 578, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane6))
         );
@@ -2180,6 +2185,7 @@ public class Main extends javax.swing.JFrame {
                     } else {
                         String valor = JOptionPane.showInputDialog("Ingrese contenido de campo " + temp.get(i).getNombre() + ":");
                         cam.modificarCampo(i + 3 + numCamp + numero, valor);
+                        System.out.println(i+3+numCamp+numero);
                     }
                 }
             }
@@ -2517,15 +2523,79 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        // TODO add your handling code here:
-        String llave = tf_registro.getText();
-        
+        try {
+            // TODO add your handling code here:
+            String llave = tf_registro.getText();
+            AccesoCampo cam = new AccesoCampo();
+            String path1 = "";
+            String contenido = "";
+            JFileChooser jfc = new JFileChooser();
+            int seleccion = jfc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                String ruta = jfc.getSelectedFile().getPath();
+                path1 = ruta;
+            }
+            contenido = leer(path1);
+            File file = new File(path1);
+            modificarRegistro = file;
+            cam.crearFileCampo(file);
+            cam.leerMetadata();
+            int numReg=cam.leerNumRegistros();
+            int numCamp=cam.leerNumCampos();
+            ArrayList<Campo> camposTemporal=cam.leerCampos();
+            registrosTemp = new ArrayList();
+            integerTemp = new ArrayList();
+            for (int i = 0; i < numReg; i++) {
+                    int w = i*numCamp;
+                    if (cam.getCampoReg(w+3+numCamp).getContenido().equals(llave)) {
+                        Registro regis = new Registro();
+                        for (int j = 0; j < numCamp; j++) {
+                            Campo campo = new Campo();
+                            campo.setContenido(cam.getCampo(w+3+numCamp+j).getContenido());
+                            regis.getCampos().add(campo);
+                        }
+                        registrosTemp.add(regis);
+                        integerTemp.add(w);
+                    }
+            }
+            DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
+            for (Registro t : registrosTemp) {
+                modelo1.addElement(t);
+            }
+            jComboBox21.setModel(modelo1);
+            cam.cerrar();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void tf_registroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_registroFocusGained
         // TODO add your handling code here:
         tf_registro.selectAll();
     }//GEN-LAST:event_tf_registroFocusGained
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int x = jComboBox21.getSelectedIndex();
+            int y = integerTemp.get(x);
+            AccesoCampo cam = new AccesoCampo();
+            cam.crearFileCampo(modificarRegistro);
+            cam.leerMetadata();
+            int numReg=cam.leerNumRegistros();
+            int numCamp=cam.leerNumCampos();
+            cam.leerCampos();
+            for (int i = 0; i < numCamp; i++) {
+                String valor = JOptionPane.showInputDialog("Ingrese nuevo campo para "+ cam.nombresCampos.get(i)+":");
+                System.out.println(y+3+numCamp);
+                cam.modificarCampo(y+3+numCamp+i, valor);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_jButton33ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2605,8 +2675,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<Campo> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox21;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2708,6 +2778,10 @@ public class Main extends javax.swing.JFrame {
     ArrayList<Integer> indicesAux = new ArrayList();
     int indiceGlobal;
     File fileRegistro;
+    
+    ArrayList<Registro> registrosTemp = new ArrayList();
+    ArrayList<Integer> integerTemp = new ArrayList();
+    File modificarRegistro;
 
     public void crearArbol(ArrayList<Integer> a) {
         arbol = new Raiz(6);
@@ -2738,5 +2812,11 @@ public class Main extends javax.swing.JFrame {
             temp.add(camp);
         }
         return temp;
+    }
+    public void crearMilRegistros(String path) throws IOException{
+        AccesoCampo cam = new AccesoCampo();
+        File file = new File(path);
+        cam.escribirMetadata(path);
+        
     }
 }
