@@ -2818,5 +2818,5 @@ public class Main extends javax.swing.JFrame {
         File file = new File(path);
         cam.escribirMetadata(path);
         
-    }
+    }//ss
 }
