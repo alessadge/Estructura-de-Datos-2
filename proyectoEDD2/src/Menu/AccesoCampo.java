@@ -279,7 +279,7 @@ public class AccesoCampo {
         return temp;
     }
     
-    public void escribirMil(String path) throws IOException{
+    /*public void escribirMil(String path) throws IOException{
         flujo.seek(0*tamanoRegistro);
         flujo.writeUTF(path);
         flujo.seek(1*tamanoRegistro);
@@ -305,4 +305,5 @@ public class AccesoCampo {
             } 
         }
     }
+    */
 }

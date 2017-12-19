@@ -168,6 +168,7 @@ public class Main extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
+        jButton34 = new javax.swing.JButton();
         panel_campos = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -352,6 +353,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton34.setText("Generar 10");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -363,29 +371,33 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(tab_nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(38, 38, 38)
-                .addComponent(jButton2)
-                .addGap(47, 47, 47)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton18)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(tab_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton34)
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton1)
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton2)
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton18)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(tab_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -2185,7 +2197,7 @@ public class Main extends javax.swing.JFrame {
                     } else {
                         String valor = JOptionPane.showInputDialog("Ingrese contenido de campo " + temp.get(i).getNombre() + ":");
                         cam.modificarCampo(i + 3 + numCamp + numero, valor);
-                        System.out.println(i+3+numCamp+numero);
+                        System.out.println(i + 3 + numCamp + numero);
                     }
                 }
             }
@@ -2244,7 +2256,7 @@ public class Main extends javax.swing.JFrame {
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         if (indicesAux.isEmpty()) {
             try {
-                String contenido = "";
+                String texto = "";
                 String path1 = "";
                 JFileChooser jfc = new JFileChooser();
                 int seleccion = jfc.showOpenDialog(this);
@@ -2252,18 +2264,25 @@ public class Main extends javax.swing.JFrame {
                     String ruta = jfc.getSelectedFile().getPath();
                     path1 = ruta;
                 }
-                contenido = leer(path1);
-                File file = new File(path1);
-                fileRegistro = file;
-                AccesoCampo cam = new AccesoCampo();
-                cam.crearFileCampo(file);
-                indicesAux = cam.cargarIndices();
-            } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                
+                FileReader lector = new FileReader(path1);
+
+                BufferedReader contenido = new BufferedReader(lector);
+
+                while ((texto = contenido.readLine()) != null) {
+                    indicesAux.add(Integer.parseInt(texto));
+                    System.out.println(texto);
+                    texto = "";
+
+                }
+                crearArbol(indicesAux);
+            } //Si se causa un error al leer cae aqui
+            catch (Exception e) {
+                System.out.println("Error al leer");
             }
 
-        }else{
-            
+        } else {
+            crearArbol(indicesAux);
         }
 
         int XM = Integer.parseInt(tf_indices.getText());
@@ -2280,6 +2299,7 @@ public class Main extends javax.swing.JFrame {
             indiceGlobal = XM;
             jButton27.enable();
             jButton27.enable(true);
+            JOptionPane.showMessageDialog(null, "El indice que solicita modificar si existe en el arbol/archivo");
 
         }
 
@@ -2298,22 +2318,22 @@ public class Main extends javax.swing.JFrame {
         } else {
             crearArbol(indicesAux);
 
-            String contenido = "";
-            String path1 = "";
-            JFileChooser jfc = new JFileChooser();
-            int seleccion = jfc.showSaveDialog(this);
-            if (seleccion == JFileChooser.APPROVE_OPTION) {
-                String ruta = jfc.getSelectedFile().getPath();
-                path1 = ruta;
-            }
-            contenido = leer(path1);
-            File file = new File(path1);
-            AccesoCampo cam = new AccesoCampo();
             try {
-                cam.crearFileCampo(file);
-                cam.guardarIndices(indicesAux);
-            } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                File archivo = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Arbol.txt");
+
+                FileWriter escribir = new FileWriter(archivo, true);
+
+                String acum = "";
+
+                for (int i = 0; i < indicesAux.size(); i++) {
+                    acum += indicesAux.get(i) + "\n";
+                }
+                escribir.write(acum);
+
+                escribir.close();
+            } //Si existe un problema al escribir cae aqui
+            catch (Exception e) {
+                System.out.println("Error al escribir");
             }
 
         }
@@ -2337,7 +2357,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al Mostrar el arbol, verifique si hay indices cargados");
         } else {
             crearArbol(indicesAux);
-            System.out.println(arbol.llamarRecorrer());
+            //System.out.println(arbol.llamarRecorrer());
 
         }
 
@@ -2438,7 +2458,8 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
 
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Main.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
 
         }
@@ -2511,7 +2532,8 @@ public class Main extends javax.swing.JFrame {
             archivo.setNombre(nombre);
 
         } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -2540,23 +2562,23 @@ public class Main extends javax.swing.JFrame {
             modificarRegistro = file;
             cam.crearFileCampo(file);
             cam.leerMetadata();
-            int numReg=cam.leerNumRegistros();
-            int numCamp=cam.leerNumCampos();
-            ArrayList<Campo> camposTemporal=cam.leerCampos();
+            int numReg = cam.leerNumRegistros();
+            int numCamp = cam.leerNumCampos();
+            ArrayList<Campo> camposTemporal = cam.leerCampos();
             registrosTemp = new ArrayList();
             integerTemp = new ArrayList();
             for (int i = 0; i < numReg; i++) {
-                    int w = i*numCamp;
-                    if (cam.getCampoReg(w+3+numCamp).getContenido().equals(llave)) {
-                        Registro regis = new Registro();
-                        for (int j = 0; j < numCamp; j++) {
-                            Campo campo = new Campo();
-                            campo.setContenido(cam.getCampo(w+3+numCamp+j).getContenido());
-                            regis.getCampos().add(campo);
-                        }
-                        registrosTemp.add(regis);
-                        integerTemp.add(w);
+                int w = i * numCamp;
+                if (cam.getCampoReg(w + 3 + numCamp).getContenido().equals(llave)) {
+                    Registro regis = new Registro();
+                    for (int j = 0; j < numCamp; j++) {
+                        Campo campo = new Campo();
+                        campo.setContenido(cam.getCampo(w + 3 + numCamp + j).getContenido());
+                        regis.getCampos().add(campo);
                     }
+                    registrosTemp.add(regis);
+                    integerTemp.add(w);
+                }
             }
             DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
             for (Registro t : registrosTemp) {
@@ -2564,8 +2586,10 @@ public class Main extends javax.swing.JFrame {
             }
             jComboBox21.setModel(modelo1);
             cam.cerrar();
+
         } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton32ActionPerformed
 
@@ -2582,20 +2606,80 @@ public class Main extends javax.swing.JFrame {
             AccesoCampo cam = new AccesoCampo();
             cam.crearFileCampo(modificarRegistro);
             cam.leerMetadata();
-            int numReg=cam.leerNumRegistros();
-            int numCamp=cam.leerNumCampos();
+            int numReg = cam.leerNumRegistros();
+            int numCamp = cam.leerNumCampos();
             cam.leerCampos();
             for (int i = 0; i < numCamp; i++) {
-                String valor = JOptionPane.showInputDialog("Ingrese nuevo campo para "+ cam.nombresCampos.get(i)+":");
-                System.out.println(y+3+numCamp);
-                cam.modificarCampo(y+3+numCamp+i, valor);
+                String valor = JOptionPane.showInputDialog("Ingrese nuevo campo para " + cam.nombresCampos.get(i) + ":");
+                System.out.println(y + 3 + numCamp);
+                cam.modificarCampo(y + 3 + numCamp + i, valor);
+
             }
         } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton33ActionPerformed
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+        Campo aux = new Campo();
+        Campo aux2 = new Campo();
+
+        aux.setNombre("Nombre");
+        aux2.setNombre("edad");
+
+        campos10mil.add(aux);
+        campos10mil.add(aux2);
+
+        for (int i = 0; i < 10000; i++) {
+            Registro a = new Registro();
+
+            a.setCampos(newCampo(campos10mil));
+            for (int j = 0; j < campos10mil.size(); j++) {
+                if (j == 0) {
+                    a.getCampos().get(j).setContenido("Jahaziel" + i);
+                } else {
+                    a.getCampos().get(j).setContenido("23" + i);
+                }
+            }
+            registros10mil.add(a);
+
+        }
+
+        AccesoCampo cam = new AccesoCampo();
+        File archive;
+        try {
+
+            //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + "mil" + ".txt");
+
+            /*for (int i = 0; i < registros.size(); i++) {
+                System.out.println("Registro #" + i);
+                for (int j = 0; j < campos.size(); j++) {
+                    System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j).getContenido());
+                }
+            }*/
+            //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + "mil" + ".txt");
+
+            cam.crearFileCampo(archive);
+            cam.escribirMetadata(metadata);
+            cam.escribirNumRegistros(registros10mil);
+            cam.escribirCampos(campos10mil, metadata);
+            cam.escribirRegistro(registros10mil);
+            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
+
+            cam.cerrar();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+    }//GEN-LAST:event_jButton34ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2611,16 +2695,24 @@ public class Main extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -2669,6 +2761,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -2778,7 +2871,9 @@ public class Main extends javax.swing.JFrame {
     ArrayList<Integer> indicesAux = new ArrayList();
     int indiceGlobal;
     File fileRegistro;
-    
+    ArrayList<Campo> campos10mil = new ArrayList();
+    ArrayList<Registro> registros10mil = new ArrayList();
+
     ArrayList<Registro> registrosTemp = new ArrayList();
     ArrayList<Integer> integerTemp = new ArrayList();
     File modificarRegistro;
@@ -2814,10 +2909,12 @@ public class Main extends javax.swing.JFrame {
         return temp;
         //LOLO
     }
-    public void crearMilRegistros(String path) throws IOException{
+    /* public void crearMilRegistros(String path) throws IOException{
         AccesoCampo cam = new AccesoCampo();
         File file = new File(path);
-        cam.escribirMetadata(path);
-        
+        String mil = "mil";
+        cam.crearFileCampo(file);
+        cam.escribirMil(mil);
     }//ss
+     */
 }
